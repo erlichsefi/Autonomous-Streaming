@@ -1,0 +1,2 @@
+* * * * * root /usr/local/bin/python3.7 /feedtransmission/feedtransmission.py --transmission-host  --transmission-user  --transmission-password  http://showrss.info/user/<id>.rss?magnets=true&namespaces=true&name=null&quality=null&re=n$ >> /var/log/cron_rss.log 2>&1
+# Don't remove the empty line at the end of this file. It is required to run the cron job

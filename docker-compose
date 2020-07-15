@@ -1,0 +1,51 @@
+version: '2'
+services:
+  plex:
+    container_name: plex
+    image: plexinc/pms-docker
+    restart: unless-stopped
+    ports:
+      - 32400:32400/tcp
+      - 3005:3005/tcp
+      - 8324:8324/tcp
+      - 32469:32469/tcp
+      - 1900:1900/udp
+      - 32410:32410/udp
+      - 32412:32412/udp
+      - 32413:32413/udp
+      - 32414:32414/udp
+    environment:
+      - TZ=/
+      - PLEX_CLAIM=
+      - ADVERTISE_IP=http://:32400/
+      - PLEX_UID=1000
+      - PLEX_GID-1000
+    hostname: PlexServer
+    volumes:
+     - /home//plex/config:/config 
+     - /home//plex/transcode:/transcode 
+     - /home//plex/data:/data 
+     - /home//plex/movies:/movies 
+     - /home//plex/tvshows:/tvshows
+     - /home//plex/music:/music 
+     - /home//external_hd:/external 
+  
+transmission:
+    image: linuxserver/transmission
+    container_name: transmission
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=/
+      - TRANSMISSION_WEB_HOME=/combustion-release/ #optional
+      - USER=
+      - PASS=
+    volumes:
+     - /home//plex/torrent_config:/config 
+     - /home//plex/torrent_downloads:/downloads 
+     - /home//plex/torrent_watch:/watch
+    ports:
+      - 9091:9091
+      - 51413:51413
+      - 51413:51413/udp
+    restart: unless-stopped

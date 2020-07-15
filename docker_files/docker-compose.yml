@@ -1,0 +1,12 @@
+version: '3'
+services:
+  orca:
+    image: /orca
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: test
+    volumes:
+      - /home//plex/torrent_downloads:/torrent_download
+      - /home//plex/movies:/movies
+      - /home//plex/tvshows:/tvshows

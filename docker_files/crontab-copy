@@ -1,0 +1,2 @@
+* * * * * root /usr/local/bin/python3.7 -m mnamer "/torrent_download" -b -r --movie-directory "/movies" --episode-directory "/tvshows" --episode-format "{series}\Season {season:02}\ {series} {season:02}x{episode:02} - {title}{extension}"  >> /var/log/cron_copy.log 2>&1
+# Don't remove the empty line at the end of this file. It is required to run the cron job
