@@ -33,8 +33,3 @@ RUN apt-get -y install cron
 
 # Run the command on container startup
 CMD cron && tail -f /var/log/cron_copy.log  & tail -f /var/log/cron_rss.log 
-
-
-#python3 /feedtransmission/feedtransmission.py --transmission-host  --transmission-user  --transmission-password  http://showrss.info/user/<id>.rss?magnets=true&namespaces=true&name=null&quality=null&re=null
-#python3 -m mnamer "${downloads_path}" -b -r --movie-directory "${movies_path}" --episode-directory "${movies_path}" --episode-format "{series}\Season {season:02}\ {series} {season:02}x{episode:02} - {title}{extension}"
-#/CMD mnamer "${downloads_path}" -b -r --movie-directory "${movies_path}" --episode-directory "${movies_path}" --episode-format "{series}\Season {season:02}\ {series} {season:02}x{episode:02} - {title}{extension}" &&  python3 /feedtransmission/feedtransmission.py --transmission-user  --transmission-password  http://showrss.info/user/<id>.rss?magnets=true&namespaces=true&name=null&quality=null&re=null

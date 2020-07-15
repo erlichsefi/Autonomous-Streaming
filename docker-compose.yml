@@ -49,3 +49,23 @@ transmission:
       - 51413:51413
       - 51413:51413/udp
     restart: unless-stopped
+
+version: '3'
+services:
+  orca:
+    image: /orca
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: orca
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - USER=
+      - PASS=
+      - TRANSMISSION_HOST=
+      - RSS_FEED=http://showrss.info/user/<id>.rss?magnets=true&namespaces=true&name=null&quality=null&re=n$
+    volumes:
+      - /home//plex/torrent_downloads:/torrent_download
+      - /home//plex/movies:/movies
+      - /home//plex/tvshows:/tvshows
