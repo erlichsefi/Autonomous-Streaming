@@ -53,7 +53,7 @@ services:
     image: /orca
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: docker_files/Dockerfile
     container_name: orca
     environment:
       - PUID=1000
@@ -61,7 +61,7 @@ services:
       - USER=
       - PASS=
       - TRANSMISSION_HOST=
-      - RSS_FEED="http://showrss.info/user/<id>.rss?magnets=true&namespaces=true&name=null&quality=null&re=null"
+      - RSS_FEED=http://showrss.info/user/<id>.rss?magnets=true&namespaces=true&name=null&quality=null&re=null
     volumes:
       - /home//plex/torrent_downloads:/torrent_download
       - /home//plex/movies:/movies
