@@ -25,9 +25,9 @@ services:
      - /home//plex/config:/config 
      - /home//plex/transcode:/transcode 
      - /home//plex/data:/data 
-     - /home//plex/movies:/movies 
-     - /home//plex/tvshows:/tvshows
-     - /home//plex/music:/music 
+     - /home//external_hd/Video_lib/movies:/movies 
+     - /home//external_hd/Video_lib/tvshows:/tvshows
+     - /home//external_hd/Video_lib/music:/music 
      - /home//external_hd:/external 
   
   transmission:
@@ -64,5 +64,6 @@ services:
       - RSS_FEED=http://showrss.info/user/<id>.rss?magnets=true&namespaces=true&name=null&quality=null&re=null
     volumes:
       - /home//plex/torrent_downloads:/torrent_download
-      - /home//plex/movies:/movies
-      - /home//plex/tvshows:/tvshows
+      - /home//external_hd/Video_lib/movies:/movies
+      - /home//external_hd/Video_lib/tvshows:/tvshows
+    restart: unless-stopped
