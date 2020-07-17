@@ -1,19 +1,19 @@
-version: '3'
+version: '2'
 services:
   orca:
     image: /orca
     build:
       context: .
-      dockerfile: Dockerfile
     container_name: orca
     environment:
-      - PUID=1000
-      - PGID=1000
-      - USER=
-      - PASS=
-      - TRANSMISSION_HOST=
-      - RSS_FEED=http://showrss.info/user/<id>.rss?magnets=true&namespaces=true&name=null&quality=null&re=null
+      - PUID=${UID}
+      - PGID=${GID}
+      - USER=${TRANSMISSION_USER}
+      - PASS=${TRANSMISSION_PASS}
+      - TRANSMISSION_HOST=${HOST_NAME}
+      - RSS_FEED=${RSS_FEED}
     volumes:
-      - /home//plex/torrent_downloads:/torrent_download
-      - /home//plex/movies:/movies
-      - /home//plex/tvshows:/tvshows
+      - ${DOWNLOAD_PATH}:/torrent_download
+      - ${MOVIES_PATH}/external_hd/Video_lib/movies:/movies
+      - ${TVSHOW_PATH}:/tvshows
+    restart: unless-stopped
