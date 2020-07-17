@@ -15,35 +15,35 @@ services:
       - 32413:32413/udp
       - 32414:32414/udp
     environment:
-      - TZ=/
-      - PLEX_CLAIM=
-      - ADVERTISE_IP=http://:32400/
-      - PLEX_UID=1000
-      - PLEX_GID-1000
-    hostname: PlexServer
+      - TZ=${TZ}
+      - PLEX_CLAIM=${PLEX_CLAIM_ID}
+      - ADVERTISE_IP=http://${HOST_NAME}:32400/
+      - PLEX_UID=${UID}
+      - PLEX_GID=${GID}
+    hostname: ${PLEX_HOST_NAME}
     volumes:
-     - /home//plex/config:/config 
-     - /home//plex/transcode:/transcode 
-     - /home//plex/data:/data 
-     - /home//external_hd/Video_lib/movies:/movies 
-     - /home//external_hd/Video_lib/tvshows:/tvshows
-     - /home//external_hd/Video_lib/music:/music 
+     - ${META_FOLDER}/config:/config 
+     - ${META_FOLDER}/transcode:/transcode 
+     - ${META_FOLDER}/data:/data 
+     - ${MOVIES_PATH}:/movies 
+     - ${TVSHOW_PATH}:/tvshows
+     - ${MUSIC_PATH}/music:/music 
      - /home//external_hd:/external 
   
   transmission:
     image: linuxserver/transmission
     container_name: transmission
     environment:
-      - PUID=1000
-      - PGID=1000
-      - TZ=/
+      - PUID=${UID}
+      - PGID=${GID}
+      - TZ=${TZ}
       - TRANSMISSION_WEB_HOME=/combustion-release/ #optional
-      - USER=
-      - PASS=
+      - USER=${TRANSMISSION_USER}
+      - PASS=${TRANSMISSION_PASS}
     volumes:
-     - /home//plex/torrent_config:/config 
-     - /home//plex/torrent_downloads:/downloads 
-     - /home//plex/torrent_watch:/watch
+     - ${META_FOLDER}/plex/torrent_config:/config 
+     - ${DOWNLOAD_PATH}:/downloads 
+     - ${META_FOLDER}/torrent_watch:/watch
     ports:
       - 9091:9091
       - 51413:51413
@@ -56,14 +56,14 @@ services:
       dockerfile: docker_files/Dockerfile
     container_name: orca
     environment:
-      - PUID=1000
-      - PGID=1000
-      - USER=
-      - PASS=
-      - TRANSMISSION_HOST=
-      - RSS_FEED=http://showrss.info/user/<id>.rss?magnets=true&namespaces=true&name=null&quality=null&re=null
+      - PUID=${UID}
+      - PGID=${GID}
+      - USER=${TRANSMISSION_USER}
+      - PASS=${TRANSMISSION_PASS}
+      - TRANSMISSION_HOST=${HOST_NAME}
+      - RSS_FEED=${RSS_FEED}
     volumes:
-      - /home//plex/torrent_downloads:/torrent_download
-      - /home//external_hd/Video_lib/movies:/movies
-      - /home//external_hd/Video_lib/tvshows:/tvshows
+      - ${DOWNLOAD_PATH}:/torrent_download
+      - ${MOVIES_PATH}/external_hd/Video_lib/movies:/movies
+      - ${TVSHOW_PATH}:/tvshows
     restart: unless-stopped
