@@ -52,8 +52,7 @@ services:
   orca:
     image: /orca
     build:
-      context: .
-      dockerfile: docker_files/Dockerfile
+      context: docker_files/.
     container_name: orca
     environment:
       - PUID=${UID}
