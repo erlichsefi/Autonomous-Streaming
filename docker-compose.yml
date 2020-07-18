@@ -27,8 +27,7 @@ services:
      - ${META_FOLDER}/data:/data 
      - ${MOVIES_PATH}:/movies 
      - ${TVSHOW_PATH}:/tvshows
-     - ${MUSIC_PATH}/music:/music 
-     - /home//external_hd:/external 
+     - ${MUSIC_PATH}/music:/music
   
   transmission:
     image: linuxserver/transmission
