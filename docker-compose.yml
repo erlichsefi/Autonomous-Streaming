@@ -27,8 +27,8 @@ services:
      - ${META_FOLDER}/data:/data 
      - ${MOVIES_PATH}:/movies 
      - ${TVSHOW_PATH}:/tvshows
-     - ${MUSIC_PATH}/music:/music
-  
+     - ${MUSIC_PATH}/music:/music 
+       
   transmission:
     image: linuxserver/transmission
     container_name: transmission
@@ -49,7 +49,7 @@ services:
       - 51413:51413/udp
     restart: unless-stopped
   orca:
-    image: /orca
+    image: erlichsefi/orca
     build:
       context: docker_files/.
     container_name: orca
