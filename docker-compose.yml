@@ -27,8 +27,8 @@ services:
      - ${META_FOLDER}/data:/data 
      - ${MOVIES_PATH}:/movies 
      - ${TVSHOW_PATH}:/tvshows
-     - ${MUSIC_PATH}/music:/music 
-       
+     - ${MUSIC_PATH}:/music 
+  
   transmission:
     image: linuxserver/transmission
     container_name: transmission
@@ -62,6 +62,6 @@ services:
       - RSS_FEED=${RSS_FEED}
     volumes:
       - ${DOWNLOAD_PATH}:/torrent_download
-      - ${MOVIES_PATH}/external_hd/Video_lib/movies:/movies
+      - ${MOVIES_PATH}:/movies
       - ${TVSHOW_PATH}:/tvshows
     restart: unless-stopped
