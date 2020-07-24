@@ -1,0 +1,1 @@
+/usr/local/bin/python3.7 /feedtransmission/feedtransmission.py --transmission-host "${TRANSMISSION_HOST}" --transmission-user "${USER}" --transmission-password "${PASS}" "${RSS_FEED}"

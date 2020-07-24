@@ -1,2 +1,2 @@
-* * * * * eval echo "/usr/local/bin/python3.7 /feedtransmission/feedtransmission.py --transmission-host ${TRANSMISSION_HOST} --transmission-user ${USER} --transmission-password ${PASS} ${RSS_FEED}" >> /var/log/cron_rss.log 2>&1
+* * * * * root env - `cat /etc/env.txt` bash /etc/rss.sh >> /var/log/cron_rss.log 2>&1
 # Don't remove the empty line at the end of this file. It is required to run the cron job
