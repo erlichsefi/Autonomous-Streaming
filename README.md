@@ -30,7 +30,8 @@ What you need to do?
     - 'TVSHOW_PATH' is a folder where all tvshows should be stored.
     - 'MUSIC_PATH' is a folder where all music should be stored.
 3. run 'docker-compose build'
-4. run 'docker-compose up'
+4. allow build script to run "chmod +x build.sh"
+4. run 'sudo ./build.sh'
 5. enjoy! 
    - you can find plex at http://<HOST_NAME>:32400/
    - you can find transmission in http://<HOST_NAME>:9091/
