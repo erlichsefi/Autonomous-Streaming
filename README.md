@@ -1,4 +1,4 @@
-# media_dockers
+# Autonomous-Streaming
 
 This is a compose of 4 serivces in 3 dockers:
 - Plex Docker: an home media server, that take the media files and stream them to a client with the full media description.
